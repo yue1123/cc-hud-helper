@@ -4,6 +4,7 @@ import type { HudConfig } from '@/lib/hud-schema'
 import { mergeConfig } from '@/lib/merge-config'
 import { setPath, deletePath, getPath, type JsonObject } from '@/lib/path-set'
 import { encodeConfig, decodeConfig } from '@/lib/url-codec'
+import { generateDiagnostics, type Diagnostic } from '@/lib/diagnostics'
 
 const HASH_DEBOUNCE_MS = 500
 
@@ -13,6 +14,14 @@ export const useConfigStore = defineStore('config', () => {
   let hashTimer: number | null = null
 
   const parsedConfig = computed<HudConfig>(() => mergeConfig(rawJson.value))
+
+  const diagnostics = computed<Diagnostic[]>(() =>
+    generateDiagnostics(rawJson.value, parsedConfig.value),
+  )
+
+  function diagnosticsForPath(path: string): Diagnostic[] {
+    return diagnostics.value.filter((d) => d.path === path)
+  }
 
   function patchField(path: string, value: unknown): void {
     rawJson.value = setPath(rawJson.value, path, value)
@@ -69,6 +78,7 @@ export const useConfigStore = defineStore('config', () => {
   return {
     rawJson,
     parsedConfig,
+    diagnostics,
     lastHashWrite,
     patchField,
     clearField,
@@ -77,5 +87,6 @@ export const useConfigStore = defineStore('config', () => {
     reset,
     loadFromHash,
     startHashSync,
+    diagnosticsForPath,
   }
 })

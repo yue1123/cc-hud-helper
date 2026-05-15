@@ -58,4 +58,20 @@ describe('useConfigStore', () => {
     store.patchField('lineLayout', 'expanded')
     expect(store.rawJson).toEqual({ lineLayout: 'expanded' })
   })
+
+  it('exposes diagnostics for invalid values', () => {
+    const store = useConfigStore()
+    store.patchField('display.contextWarningThreshold', 150)
+    expect(
+      store.diagnostics.some((d) => d.path === 'display.contextWarningThreshold'),
+    ).toBe(true)
+  })
+
+  it('diagnosticsForPath filters', () => {
+    const store = useConfigStore()
+    store.patchField('display.contextValue', 'gibberish')
+    const list = store.diagnosticsForPath('display.contextValue')
+    expect(list).toHaveLength(1)
+    expect(list[0]!.kind).toBe('unknownEnum')
+  })
 })
