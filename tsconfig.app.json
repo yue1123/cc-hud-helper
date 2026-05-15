@@ -1,25 +1,21 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  // Per-file include for upstream submodule files. A wholesale glob
-  // (vendor/claude-hud/src/**/*.ts) surfaces ~43 TS errors from upstream's
-  // looser style colliding with our strict noUncheckedIndexedAccess. When
-  // Task 12 wires the full renderer, we'll need a sibling tsconfig.upstream.json
-  // with relaxed rules and project references. Until then: add files here as
-  // each new shim consumes them.
+  // Upstream submodule files are type-checked via tsconfig.upstream.json
+  // (relaxed strict mode). We reference that project from tsconfig.json so
+  // vue-tsc --build builds both. Our own src/ stays under full strictness here.
   "include": [
     "env.d.ts",
     "src/**/*",
-    "src/**/*.vue",
-    "vendor/claude-hud/src/render/colors.ts",
-    "vendor/claude-hud/src/config.ts",
-    "vendor/claude-hud/src/i18n/types.ts",
-    "vendor/claude-hud/src/i18n/index.ts",
-    "vendor/claude-hud/src/i18n/en.ts",
-    "vendor/claude-hud/src/i18n/zh.ts",
-    "vendor/claude-hud/src/constants.ts"
+    "src/**/*.vue"
   ],
   "exclude": ["src/**/__tests__/*"],
+  "references": [
+    { "path": "./tsconfig.upstream.json" }
+  ],
   "compilerOptions": {
+    // Composite required so tsconfig.app.json can reference tsconfig.upstream.json.
+    "composite": true,
+
     // Extra safety for array and object lookups, but may have false positives.
     "noUncheckedIndexedAccess": true,
 

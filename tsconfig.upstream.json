@@ -1,0 +1,34 @@
+// Relaxed tsconfig for the upstream claude-hud submodule.
+//
+// Upstream's source is written without `noUncheckedIndexedAccess` and triggers
+// ~29 strict-TS errors when type-checked under our app-level rules. We keep
+// upstream code in its own TS project with strict mode off so we don't have
+// to patch vendor files. Our own `src/` keeps full strictness via tsconfig.app.json.
+//
+// Wired via project references in the root tsconfig.json.
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    // composite is required for project references; it implies declaration emit,
+    // so we point output at node_modules/.tmp to keep the repo clean. vue-tsc
+    // --build still uses this for type-checking only.
+    "composite": true,
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./node_modules/.tmp/upstream-types",
+    "rootDir": "./vendor/claude-hud/src",
+    "noUncheckedIndexedAccess": false,
+    "noImplicitAny": false,
+    "strict": false,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": false,
+    "paths": {
+      "@upstream/*": ["./vendor/claude-hud/src/*"]
+    },
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.upstream.tsbuildinfo"
+  },
+  "include": ["vendor/claude-hud/src/**/*.ts"]
+}
