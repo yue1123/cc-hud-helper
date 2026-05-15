@@ -4,6 +4,7 @@ import HudPreview from '@/preview/HudPreview.vue'
 import TabNav from '@/components/shell/TabNav.vue'
 import LayoutTab from '@/components/editor/LayoutTab.vue'
 import ElementsTab from '@/components/editor/ElementsTab.vue'
+import GitTab from '@/components/editor/GitTab.vue'
 import { useConfigStore } from '@/stores/config'
 
 const store = useConfigStore()
@@ -40,6 +41,7 @@ const parsedConfig = computed(() => store.parsedConfig)
     <main class="editor-stage">
       <LayoutTab v-if="activeTab === 'layout'" />
       <ElementsTab v-else-if="activeTab === 'elements'" />
+      <GitTab v-else-if="activeTab === 'git'" />
       <p v-else class="placeholder">"{{ activeTab }}" tab lands later in Plan 02.</p>
     </main>
   </div>
