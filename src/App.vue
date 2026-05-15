@@ -7,6 +7,7 @@ import ElementsTab from '@/components/editor/ElementsTab.vue'
 import GitTab from '@/components/editor/GitTab.vue'
 import DisplayTab from '@/components/editor/DisplayTab.vue'
 import ThresholdsTab from '@/components/editor/ThresholdsTab.vue'
+import ColorsTab from '@/components/editor/ColorsTab.vue'
 import { useConfigStore } from '@/stores/config'
 
 const store = useConfigStore()
@@ -46,6 +47,7 @@ const parsedConfig = computed(() => store.parsedConfig)
       <GitTab v-else-if="activeTab === 'git'" />
       <DisplayTab v-else-if="activeTab === 'display'" />
       <ThresholdsTab v-else-if="activeTab === 'thresholds'" />
+      <ColorsTab v-else-if="activeTab === 'colors'" />
       <p v-else class="placeholder">"{{ activeTab }}" tab lands later in Plan 02.</p>
     </main>
   </div>
