@@ -1,9 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import HudPreview from '@/preview/HudPreview.vue'
-import { DEFAULT_CONFIG } from '@/lib/hud-schema'
+import TabNav from '@/components/shell/TabNav.vue'
+import LayoutTab from '@/components/editor/LayoutTab.vue'
+import { useConfigStore } from '@/stores/config'
 
-const config = ref(DEFAULT_CONFIG)
+const store = useConfigStore()
+
+const tabs = [
+  { value: 'layout', label: 'Layout' },
+  { value: 'elements', label: 'Elements' },
+  { value: 'git', label: 'Git' },
+  { value: 'display', label: 'Display' },
+  { value: 'thresholds', label: 'Thresholds' },
+  { value: 'colors', label: 'Colors' },
+  { value: 'rawJson', label: 'Raw JSON' },
+]
+
+const activeTab = ref('layout')
+const parsedConfig = computed(() => store.parsedConfig)
 </script>
 
 <template>
@@ -11,23 +26,31 @@ const config = ref(DEFAULT_CONFIG)
     <header class="topbar">
       <span class="logo">▆ claude-hud.cfg</span>
       <span class="topbar-spacer" />
-      <span class="topbar-hint">v0.1 — preview only</span>
+      <span class="topbar-hint">v0.2 — editor</span>
     </header>
 
     <section class="preview-stage">
       <div class="stage-label">PREVIEW (live)</div>
-      <HudPreview :config="config" />
+      <HudPreview :config="parsedConfig" />
     </section>
 
+    <TabNav v-model="activeTab" :tabs="tabs" />
+
     <main class="editor-stage">
-      <p class="placeholder">Editor coming in Plan 02</p>
+      <LayoutTab v-if="activeTab === 'layout'" />
+      <p v-else class="placeholder">"{{ activeTab }}" tab lands later in Plan 02.</p>
     </main>
   </div>
 </template>
 
 <style scoped>
-.topbar-spacer { flex: 1; }
-.topbar-hint { color: var(--fg-dim); font-size: 11px; }
+.topbar-spacer {
+  flex: 1;
+}
+.topbar-hint {
+  color: var(--fg-dim);
+  font-size: 11px;
+}
 .preview-stage {
   position: sticky;
   top: 0;
@@ -45,5 +68,9 @@ const config = ref(DEFAULT_CONFIG)
 }
 .editor-stage {
   padding: var(--space-4);
+}
+.placeholder {
+  color: var(--fg-dim);
+  font-size: 12px;
 }
 </style>
