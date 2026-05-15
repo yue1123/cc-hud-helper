@@ -1,14 +1,11 @@
 import { defineConfig } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
-import { fileURLToPath } from 'node:url'
+import { sharedAliases } from './aliases.config'
 
 export default defineConfig({
   plugins: [vue()],
   resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '@upstream': fileURLToPath(new URL('./vendor/claude-hud/src', import.meta.url)),
-    },
+    alias: sharedAliases,
   },
   test: {
     environment: 'jsdom',

@@ -1,5 +1,11 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
+  // Per-file include for upstream submodule files. A wholesale glob
+  // (vendor/claude-hud/src/**/*.ts) surfaces ~43 TS errors from upstream's
+  // looser style colliding with our strict noUncheckedIndexedAccess. When
+  // Task 12 wires the full renderer, we'll need a sibling tsconfig.upstream.json
+  // with relaxed rules and project references. Until then: add files here as
+  // each new shim consumes them.
   "include": [
     "env.d.ts",
     "src/**/*",
