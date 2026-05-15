@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import HudPreview from '@/preview/HudPreview.vue'
+import HudPreviewXterm from '@/preview/HudPreviewXterm.vue'
 import TabNav from '@/components/shell/TabNav.vue'
 import LayoutTab from '@/components/editor/LayoutTab.vue'
 import ElementsTab from '@/components/editor/ElementsTab.vue'
@@ -55,7 +55,7 @@ function toggleLocale() {
 
     <section class="preview-stage">
       <div class="stage-label">PREVIEW (live)</div>
-      <HudPreview :config="parsedConfig" />
+      <HudPreviewXterm :config="parsedConfig" />
     </section>
 
     <ValidationBanner />
