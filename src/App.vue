@@ -13,6 +13,7 @@ import PresetMenu from '@/components/io/PresetMenu.vue'
 import ImportButton from '@/components/io/ImportButton.vue'
 import ExportButton from '@/components/io/ExportButton.vue'
 import ShareButton from '@/components/io/ShareButton.vue'
+import ValidationBanner from '@/components/shell/ValidationBanner.vue'
 import { useConfigStore } from '@/stores/config'
 
 const store = useConfigStore()
@@ -48,6 +49,7 @@ const parsedConfig = computed(() => store.parsedConfig)
       <HudPreview :config="parsedConfig" />
     </section>
 
+    <ValidationBanner />
     <TabNav v-model="activeTab" :tabs="tabs" />
 
     <main class="editor-stage">
