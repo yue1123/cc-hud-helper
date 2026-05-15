@@ -1,11 +1,16 @@
 import { defineStore } from 'pinia'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import type { HudConfig } from '@/lib/hud-schema'
 import { mergeConfig } from '@/lib/merge-config'
 import { setPath, deletePath, getPath, type JsonObject } from '@/lib/path-set'
+import { encodeConfig, decodeConfig } from '@/lib/url-codec'
+
+const HASH_DEBOUNCE_MS = 500
 
 export const useConfigStore = defineStore('config', () => {
   const rawJson = ref<JsonObject>({})
+  const lastHashWrite = ref(0)
+  let hashTimer: number | null = null
 
   const parsedConfig = computed<HudConfig>(() => mergeConfig(rawJson.value))
 
@@ -29,5 +34,48 @@ export const useConfigStore = defineStore('config', () => {
     rawJson.value = {}
   }
 
-  return { rawJson, parsedConfig, patchField, clearField, readField, setRawJson, reset }
+  function loadFromHash(): void {
+    if (typeof window === 'undefined') return
+    const hash = window.location.hash.replace(/^#/, '')
+    if (!hash) return
+    const decoded = decodeConfig(hash)
+    if (decoded) rawJson.value = decoded
+  }
+
+  function startHashSync(): void {
+    if (typeof window === 'undefined') return
+    watch(
+      rawJson,
+      (next) => {
+        if (hashTimer !== null) window.clearTimeout(hashTimer)
+        hashTimer = window.setTimeout(() => {
+          const isEmpty = Object.keys(next).length === 0
+          try {
+            if (isEmpty) {
+              history.replaceState(null, '', window.location.pathname + window.location.search)
+            } else {
+              history.replaceState(null, '', '#' + encodeConfig(next))
+            }
+            lastHashWrite.value = Date.now()
+          } catch {
+            // ignore — URL sync is best-effort
+          }
+        }, HASH_DEBOUNCE_MS)
+      },
+      { deep: true },
+    )
+  }
+
+  return {
+    rawJson,
+    parsedConfig,
+    lastHashWrite,
+    patchField,
+    clearField,
+    readField,
+    setRawJson,
+    reset,
+    loadFromHash,
+    startHashSync,
+  }
 })
