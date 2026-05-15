@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, ref, watch } from 'vue'
 import type { HudConfig } from '@/lib/hud-schema'
-import { mergeConfig } from '@/lib/merge-config'
+import { mergeConfig } from '@upstream/config'
 import { setPath, deletePath, getPath, type JsonObject } from '@/lib/path-set'
 import { encodeConfig, decodeConfig } from '@/lib/url-codec'
 import { generateDiagnostics, type Diagnostic } from '@/lib/diagnostics'

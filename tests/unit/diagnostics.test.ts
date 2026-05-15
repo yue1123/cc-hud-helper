@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { generateDiagnostics } from '@/lib/diagnostics'
-import { mergeConfig } from '@/lib/merge-config'
+import { mergeConfig } from '@upstream/config'
 
 describe('diagnostics', () => {
   it('clean default produces no diagnostics', () => {

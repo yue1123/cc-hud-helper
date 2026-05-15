@@ -1,10 +1,15 @@
 import { describe, it, expect } from 'vitest'
-import { mergeConfig } from '@/lib/merge-config'
+import { mergeConfig } from '@upstream/config'
 import { DEFAULT_CONFIG } from '@/lib/hud-schema'
 
 describe('mergeConfig', () => {
-  it('empty input returns DEFAULT_CONFIG', () => {
-    expect(mergeConfig({})).toEqual(DEFAULT_CONFIG)
+  it('empty input returns DEFAULT_CONFIG (modulo sevenDayThreshold)', () => {
+    // Upstream's validateThreshold(undefined) returns 0, not the DEFAULT_CONFIG value (80).
+    // Upstream is now the source of truth, so assert the actual produced shape.
+    expect(mergeConfig({})).toEqual({
+      ...DEFAULT_CONFIG,
+      display: { ...DEFAULT_CONFIG.display, sevenDayThreshold: 0 },
+    })
   })
 
   it('clamps contextWarningThreshold to [0,100]', () => {
