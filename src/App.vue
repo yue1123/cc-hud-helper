@@ -9,6 +9,10 @@ import DisplayTab from '@/components/editor/DisplayTab.vue'
 import ThresholdsTab from '@/components/editor/ThresholdsTab.vue'
 import ColorsTab from '@/components/editor/ColorsTab.vue'
 import RawJsonTab from '@/components/editor/RawJsonTab.vue'
+import PresetMenu from '@/components/io/PresetMenu.vue'
+import ImportButton from '@/components/io/ImportButton.vue'
+import ExportButton from '@/components/io/ExportButton.vue'
+import ShareButton from '@/components/io/ShareButton.vue'
 import { useConfigStore } from '@/stores/config'
 
 const store = useConfigStore()
@@ -31,8 +35,12 @@ const parsedConfig = computed(() => store.parsedConfig)
   <div id="app-shell">
     <header class="topbar">
       <span class="logo">▆ claude-hud.cfg</span>
+      <PresetMenu />
+      <ImportButton />
+      <ExportButton />
+      <ShareButton />
       <span class="topbar-spacer" />
-      <span class="topbar-hint">v0.2 — editor</span>
+      <span class="topbar-hint">v0.3</span>
     </header>
 
     <section class="preview-stage">

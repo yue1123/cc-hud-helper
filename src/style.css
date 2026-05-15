@@ -53,7 +53,7 @@ html, body, #app {
   align-items: center;
   padding: var(--space-3) var(--space-4);
   border-bottom: 1px dashed var(--border-dash);
-  gap: var(--space-3);
+  gap: var(--space-2);
 }
 
 .logo {
