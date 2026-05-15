@@ -1,11 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div id="app-shell">
+    <header class="topbar">
+      <span class="logo">▆ claude-hud.cfg</span>
+    </header>
+    <main class="preview-stage">
+      <p class="placeholder">Preview goes here</p>
+    </main>
+  </div>
 </template>
-
-<style scoped></style>
