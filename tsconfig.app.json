@@ -1,6 +1,12 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "vendor/claude-hud/src/render/colors.ts",
+    "vendor/claude-hud/src/config.ts"
+  ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     // Extra safety for array and object lookups, but may have false positives.
@@ -8,8 +14,18 @@
 
     // Path mapping for cleaner imports.
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@upstream/*": ["./vendor/claude-hud/src/*"]
     },
+
+    // Upstream submodule uses ".js" import extensions (TS-emit convention).
+    // Bundler resolution lets Vite/vue-tsc map them back to the .ts sources.
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+
+    // Upstream source uses Node built-ins (node:fs etc.). We only import
+    // colors.ts at runtime (zero Node deps), but type-check needs Node types.
+    "types": ["node"],
 
     // `vue-tsc --build` produces a .tsbuildinfo file for incremental type-checking.
     // Specified here to keep it out of the root directory.
