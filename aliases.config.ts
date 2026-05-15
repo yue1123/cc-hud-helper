@@ -8,6 +8,10 @@ const u = (p: string) => fileURLToPath(new URL(p, import.meta.url))
 
 export const sharedAliases = [
   { find: '@', replacement: u('./src') },
+  // upstream stdin replacement (renderer-only subset). Regex form because
+  // upstream uses `.js` import extensions but the shim is `.ts`. Must come
+  // before the broad `@upstream` string-prefix alias to take precedence.
+  { find: /^@upstream\/stdin(\.js)?$/, replacement: u('./src/upstream-shims/stdin.ts') },
   { find: '@upstream', replacement: u('./vendor/claude-hud/src') },
   // Node built-ins → browser stubs (see src/upstream-shims/node/)
   { find: 'node:fs', replacement: u('./src/upstream-shims/node/fs.ts') },

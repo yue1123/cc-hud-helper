@@ -12,7 +12,8 @@
     "src/**/*.vue",
     "vendor/claude-hud/src/render/colors.ts",
     "vendor/claude-hud/src/config.ts",
-    "vendor/claude-hud/src/i18n/types.ts"
+    "vendor/claude-hud/src/i18n/types.ts",
+    "vendor/claude-hud/src/constants.ts"
   ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
