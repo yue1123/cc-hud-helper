@@ -27,10 +27,10 @@ describe('color-map', () => {
   })
 
   it('unknown named falls back to fg-base var', () => {
-    expect(hudColorToCss('notAColor' as any)).toBe('var(--fg-base)')
+    expect(hudColorToCss('notAColor' as never)).toBe('var(--fg-base)')
   })
 
   it('out-of-range index falls back', () => {
-    expect(hudColorToCss(999 as any)).toBe('var(--fg-base)')
+    expect(hudColorToCss(999 as never)).toBe('var(--fg-base)')
   })
 })

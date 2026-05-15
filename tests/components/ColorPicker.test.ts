@@ -21,9 +21,11 @@ describe('ColorPicker', () => {
   it('switching modes emits a sensible default for the new mode', async () => {
     const w = mount(ColorPicker, { props: { modelValue: 'green' } })
     await w.find('[data-mode="hex"]').trigger('click')
-    const evt = w.emitted('update:modelValue')?.[0]
-    expect(typeof evt?.[0]).toBe('string')
-    expect((evt?.[0] as string).startsWith('#')).toBe(true)
+    const evt = w.emitted('update:modelValue')
+    expect(evt).toBeTruthy()
+    const value = evt![0]![0] as string
+    expect(typeof value).toBe('string')
+    expect(value.startsWith('#')).toBe(true)
   })
 
   it('changing the hex input emits the new hex', async () => {
