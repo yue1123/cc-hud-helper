@@ -1,3 +1,6 @@
+// MUST be first — sets up globalThis.process before any upstream module loads.
+import '@/process-polyfill'
+
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
