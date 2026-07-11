@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renderToString > renders DEFAULT_CONFIG identically to the captured snapshot 1`] = `
-"[0m[36m[Opus 4.7 ◆ high][0m │ ]8;;file:///Users/dh/Desktop/code/claude-uhd-cc\\[33mclaude-uhd-cc[0m]8;;\\ [35mgit:([0m[36mmain[0m[35m)[0m
+"[0m[36m[Opus 4.7][0m │ ]8;;file:///Users/dh/Desktop/code/claude-uhd-cc\\[33mclaude-uhd-cc[0m]8;;\\ ]8;;file:///Users/dh/Desktop/code/shared-ui\\[2m+shared-ui[0m]8;;\\ ]8;;file:///Users/dh/work/api-server\\[2m+api-server[0m]8;;\\ [35mgit:([0m[36mmain[0m[35m)[0m
 [0m[2mContext[0m [32m██████[2m░░░░[0m [32m58%[0m │ [2mUsage[0m [94m██[2m░░░░░░░░[0m [94m22%[0m (resets in 2h 24m)"
 `;

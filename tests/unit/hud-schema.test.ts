@@ -14,8 +14,12 @@ describe('hud-schema (upstream re-export)', () => {
     )
   })
 
-  it('DEFAULT_ELEMENT_ORDER lists 11 elements', () => {
-    expect(DEFAULT_ELEMENT_ORDER).toHaveLength(11)
+  it('DEFAULT_ELEMENT_ORDER lists the 13 upstream elements', () => {
+    expect(DEFAULT_ELEMENT_ORDER).toHaveLength(13)
+    expect([...DEFAULT_ELEMENT_ORDER].sort()).toEqual(
+      ['project', 'addedDirs', 'context', 'usage', 'promptCache', 'memory',
+       'environment', 'tools', 'skills', 'mcp', 'agents', 'todos', 'sessionTime'].sort(),
+    )
   })
 
   it('KNOWN_HUD_ELEMENTS contains the same set as DEFAULT_ELEMENT_ORDER', () => {

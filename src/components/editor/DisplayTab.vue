@@ -14,6 +14,11 @@ const d = computed(() => store.parsedConfig.display)
 function set(path: string, v: unknown) {
   store.patchField(`display.${path}`, v)
 }
+
+function setNullable(path: string, v: number | null) {
+  if (v === null) store.clearField(`display.${path}`)
+  else store.patchField(`display.${path}`, v)
+}
 </script>
 
 <template>
@@ -49,6 +54,19 @@ function set(path: string, v: unknown) {
         @update:modelValue="set('autocompactBuffer', $event)"
       />
     </FieldRow>
+    <FieldRow
+      :label="t('display.fields.autoCompactWindow.label')"
+      path="display.autoCompactWindow"
+      :hint="t('display.fields.autoCompactWindow.hint')"
+    >
+      <NumberInput
+        :modelValue="d.autoCompactWindow"
+        :min="1"
+        nullable
+        :placeholder="t('display.placeholders.autoCompactWindow')"
+        @update:modelValue="setNullable('autoCompactWindow', $event)"
+      />
+    </FieldRow>
 
     <h3 class="section-title">{{ t('display.sections.usageDisplay') }}</h3>
     <FieldRow
@@ -80,6 +98,30 @@ function set(path: string, v: unknown) {
       />
     </FieldRow>
 
+    <h3 class="section-title">{{ t('display.sections.tools') }}</h3>
+    <FieldRow
+      :label="t('display.fields.toolNameMaxLength.label')"
+      path="display.toolNameMaxLength"
+      :hint="t('display.fields.toolNameMaxLength.hint')"
+    >
+      <NumberInput
+        :modelValue="d.toolNameMaxLength"
+        :min="0"
+        @update:modelValue="set('toolNameMaxLength', $event ?? 0)"
+      />
+    </FieldRow>
+    <FieldRow
+      :label="t('display.fields.toolsMaxVisible.label')"
+      path="display.toolsMaxVisible"
+      :hint="t('display.fields.toolsMaxVisible.hint')"
+    >
+      <NumberInput
+        :modelValue="d.toolsMaxVisible"
+        :min="0"
+        @update:modelValue="set('toolsMaxVisible', $event ?? 0)"
+      />
+    </FieldRow>
+
     <h3 class="section-title">{{ t('display.sections.model') }}</h3>
     <FieldRow
       :label="t('display.fields.modelFormat.label')"
@@ -108,6 +150,31 @@ function set(path: string, v: unknown) {
         @update:modelValue="set('modelOverride', $event)"
       />
     </FieldRow>
+    <FieldRow
+      :label="t('display.fields.providerName.label')"
+      path="display.providerName"
+      :hint="t('display.fields.providerName.hint')"
+    >
+      <TextInput
+        :modelValue="d.providerName"
+        :maxLength="40"
+        :placeholder="t('display.placeholders.providerName')"
+        @update:modelValue="set('providerName', $event)"
+      />
+    </FieldRow>
+
+    <h3 class="section-title">{{ t('display.sections.advisor') }}</h3>
+    <FieldRow
+      :label="t('display.fields.advisorOverride.label')"
+      path="display.advisorOverride"
+      :hint="t('display.fields.advisorOverride.hint')"
+    >
+      <TextInput
+        :modelValue="d.advisorOverride"
+        :maxLength="80"
+        @update:modelValue="set('advisorOverride', $event)"
+      />
+    </FieldRow>
 
     <h3 class="section-title">{{ t('display.sections.time') }}</h3>
     <FieldRow
@@ -121,6 +188,8 @@ function set(path: string, v: unknown) {
           { value: 'relative', label: t('display.options.timeFormat.relative') },
           { value: 'absolute', label: t('display.options.timeFormat.absolute') },
           { value: 'both', label: t('display.options.timeFormat.both') },
+          { value: 'elapsed', label: t('display.options.timeFormat.elapsed') },
+          { value: 'elapsedAndAbsolute', label: t('display.options.timeFormat.elapsedAndAbsolute') },
         ]"
         @update:modelValue="set('timeFormat', $event)"
       />
@@ -168,6 +237,17 @@ function set(path: string, v: unknown) {
       />
     </FieldRow>
     <FieldRow
+      :label="t('display.fields.externalUsageWritePath.label')"
+      path="display.externalUsageWritePath"
+      :hint="t('display.fields.externalUsageWritePath.hint')"
+    >
+      <TextInput
+        :modelValue="d.externalUsageWritePath"
+        :placeholder="t('display.placeholders.externalUsageWritePath')"
+        @update:modelValue="set('externalUsageWritePath', $event)"
+      />
+    </FieldRow>
+    <FieldRow
       :label="t('display.fields.externalUsageFreshnessMs.label')"
       path="display.externalUsageFreshnessMs"
       :hint="t('display.fields.externalUsageFreshnessMs.hint')"
@@ -190,6 +270,20 @@ function set(path: string, v: unknown) {
         :maxLength="80"
         placeholder=""
         @update:modelValue="set('customLine', $event)"
+      />
+    </FieldRow>
+    <FieldRow
+      :label="t('display.fields.customLinePosition.label')"
+      path="display.customLinePosition"
+      :hint="t('display.fields.customLinePosition.hint')"
+    >
+      <SelectInput
+        :modelValue="d.customLinePosition"
+        :options="[
+          { value: 'last', label: t('display.options.customLinePosition.last') },
+          { value: 'first', label: t('display.options.customLinePosition.first') },
+        ]"
+        @update:modelValue="set('customLinePosition', $event)"
       />
     </FieldRow>
   </div>

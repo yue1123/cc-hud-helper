@@ -31,11 +31,15 @@ const CLAMPED_PATHS: Array<{ path: string; max: number }> = [
 
 const ENUM_PATHS: Array<{ path: string; values: ReadonlyArray<string> }> = [
   { path: 'lineLayout', values: ['compact', 'expanded'] },
-  { path: 'language', values: ['en', 'zh'] },
+  { path: 'language', values: ['en', 'zh', 'zh-Hans'] },
   { path: 'display.contextValue', values: ['percent', 'tokens', 'remaining', 'both'] },
   { path: 'display.usageValue', values: ['percent', 'remaining'] },
   { path: 'display.modelFormat', values: ['full', 'compact', 'short'] },
-  { path: 'display.timeFormat', values: ['relative', 'absolute', 'both'] },
+  {
+    path: 'display.timeFormat',
+    values: ['relative', 'absolute', 'both', 'elapsed', 'elapsedAndAbsolute'],
+  },
+  { path: 'display.customLinePosition', values: ['first', 'last'] },
   { path: 'display.addedDirsLayout', values: ['inline', 'line'] },
   { path: 'display.autocompactBuffer', values: ['enabled', 'disabled'] },
   { path: 'gitStatus.branchOverflow', values: ['truncate', 'wrap'] },

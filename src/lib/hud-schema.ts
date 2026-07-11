@@ -1,5 +1,5 @@
 /**
- * Source of truth: vendor/claude-hud/src/config.ts (submodule pinned at 6f7d073).
+ * Source of truth: vendor/claude-hud/src/config.ts (submodule pinned at v0.3.0 / b83b445).
  *
  * This file is a thin re-export. Types and DEFAULT_CONFIG come from upstream.
  * Only KNOWN_HUD_ELEMENTS is derived locally because upstream keeps it private.

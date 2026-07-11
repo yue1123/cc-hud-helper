@@ -13,6 +13,8 @@ const cfg = computed(() => store.parsedConfig)
 
 type ToggleKey =
   | 'showModel'
+  | 'showProvider'
+  | 'showAdvisor'
   | 'showProject'
   | 'showAddedDirs'
   | 'showContextBar'
@@ -21,6 +23,8 @@ type ToggleKey =
   | 'usageBarEnabled'
   | 'showResetLabel'
   | 'showTools'
+  | 'showSkills'
+  | 'showMcp'
   | 'showAgents'
   | 'showTodos'
   | 'showMemoryUsage'
@@ -32,6 +36,7 @@ type ToggleKey =
   | 'showOutputStyle'
   | 'showSessionStartDate'
   | 'showLastResponseAt'
+  | 'showCompactions'
   | 'showConfigCounts'
   | 'showCost'
   | 'showDuration'
@@ -39,6 +44,8 @@ type ToggleKey =
 
 const elementToggles: Array<{ path: string; key: ToggleKey }> = [
   { path: 'display.showModel', key: 'showModel' },
+  { path: 'display.showProvider', key: 'showProvider' },
+  { path: 'display.showAdvisor', key: 'showAdvisor' },
   { path: 'display.showProject', key: 'showProject' },
   { path: 'display.showAddedDirs', key: 'showAddedDirs' },
   { path: 'display.showContextBar', key: 'showContextBar' },
@@ -47,6 +54,8 @@ const elementToggles: Array<{ path: string; key: ToggleKey }> = [
   { path: 'display.usageBarEnabled', key: 'usageBarEnabled' },
   { path: 'display.showResetLabel', key: 'showResetLabel' },
   { path: 'display.showTools', key: 'showTools' },
+  { path: 'display.showSkills', key: 'showSkills' },
+  { path: 'display.showMcp', key: 'showMcp' },
   { path: 'display.showAgents', key: 'showAgents' },
   { path: 'display.showTodos', key: 'showTodos' },
   { path: 'display.showMemoryUsage', key: 'showMemoryUsage' },
@@ -58,6 +67,7 @@ const elementToggles: Array<{ path: string; key: ToggleKey }> = [
   { path: 'display.showOutputStyle', key: 'showOutputStyle' },
   { path: 'display.showSessionStartDate', key: 'showSessionStartDate' },
   { path: 'display.showLastResponseAt', key: 'showLastResponseAt' },
+  { path: 'display.showCompactions', key: 'showCompactions' },
   { path: 'display.showConfigCounts', key: 'showConfigCounts' },
   { path: 'display.showCost', key: 'showCost' },
   { path: 'display.showDuration', key: 'showDuration' },

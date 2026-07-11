@@ -40,6 +40,30 @@ describe('renderToString', () => {
     expect(console.log).toBe(original)
   })
 
+  // Regression: the mock bridge builds RenderContext directly, bypassing
+  // upstream's index.ts which only injects effort when showEffortLevel is on.
+  // The model badge renders effort purely on its presence, so the bridge must
+  // replicate that gating — otherwise the toggle looks dead in the preview.
+  it('gates the effort badge on showEffortLevel', () => {
+    const off = renderToString({ ...DEFAULT_CONFIG, display: { ...DEFAULT_CONFIG.display, showEffortLevel: false } })
+    const on = renderToString({ ...DEFAULT_CONFIG, display: { ...DEFAULT_CONFIG.display, showEffortLevel: true } })
+    expect(off).not.toContain('◆')
+    expect(on).toContain('◆')
+  })
+
+  // Regression: these toggles were dead in the preview until the mock context
+  // carried skills / mcpServers / compactionCount / advisorModel data.
+  it('renders opt-in elements once their mock data is present', () => {
+    const cfg = (extra: Record<string, unknown>) => ({
+      ...DEFAULT_CONFIG,
+      display: { ...DEFAULT_CONFIG.display, ...extra },
+    })
+    expect(renderToString(cfg({ showSkills: true }))).toContain('Skills')
+    expect(renderToString(cfg({ showMcp: true }))).toContain('MCPs')
+    expect(renderToString(cfg({ showCompactions: true }))).toContain('Compactions')
+    expect(renderToString(cfg({ showAdvisor: true }))).toContain('Advisor')
+  })
+
   it('honors language=zh by routing through upstream i18n', () => {
     const en = renderToString({ ...DEFAULT_CONFIG, language: 'en' })
     const zh = renderToString({ ...DEFAULT_CONFIG, language: 'zh' })

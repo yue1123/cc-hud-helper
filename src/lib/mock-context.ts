@@ -54,7 +54,10 @@ export interface MockContext {
   };
   todos: MockTodo[];
   tools: MockToolRecent[];
+  skills: string[];
+  mcpServers: string[];
   agents: MockAgent[];
+  advisorModel: string;
   memory: {
     usedPercent: number;
     usedGb: number;
@@ -70,6 +73,7 @@ export interface MockContext {
     durationLabel: string;
     lastResponseAgoLabel: string;
     startedAtLabel: string;
+    compactionCount: number;
   };
   effort: {
     level: "low" | "medium" | "high" | "max";
@@ -90,7 +94,7 @@ export const MOCK_CONTEXT: MockContext = {
   },
   project: {
     cwd: "/Users/dh/Desktop/code/claude-uhd-cc",
-    addedDirs: [],
+    addedDirs: ["/Users/dh/Desktop/code/shared-ui", "/Users/dh/work/api-server"],
     sessionName: "plan-foundation",
   },
   context: {
@@ -134,7 +138,10 @@ export const MOCK_CONTEXT: MockContext = {
     { name: "Edit", target: "src/style.css" },
     { name: "Bash" },
   ],
+  skills: ["brainstorming", "systematic-debugging"],
+  mcpServers: ["chrome-devtools", "context7"],
   agents: [{ type: "explore", status: "running" }],
+  advisorModel: "claude-opus-4-7",
   memory: {
     usedPercent: 31,
     usedGb: 9.9,
@@ -150,6 +157,7 @@ export const MOCK_CONTEXT: MockContext = {
     durationLabel: "14m 33s",
     lastResponseAgoLabel: "12s",
     startedAtLabel: "14:46",
+    compactionCount: 2,
   },
   effort: {
     level: "high",

@@ -112,6 +112,14 @@ export const zh: Messages = {
     sections: { visibility: '可见性开关', mergeGroups: '合并分组' },
     fields: {
       showModel: { label: 'showModel', hint: '显示 [模型名称] 标识。' },
+      showProvider: {
+        label: 'showProvider',
+        hint: '在模型名称前显示提供方标签(自定义名称,或自动识别的 Bedrock/Vertex/企业版)。',
+      },
+      showAdvisor: {
+        label: 'showAdvisor',
+        hint: '当配置了 /advisor 时,在项目行显示顾问模型。',
+      },
       showProject: { label: 'showProject', hint: '显示项目路径。' },
       showAddedDirs: { label: 'showAddedDirs', hint: '显示附加目录。' },
       showContextBar: { label: 'showContextBar', hint: '显示上下文使用率条。' },
@@ -123,6 +131,11 @@ export const zh: Messages = {
       usageBarEnabled: { label: 'usageBarEnabled', hint: '为使用率数值显示进度条。' },
       showResetLabel: { label: 'showResetLabel', hint: '显示使用率重置倒计时。' },
       showTools: { label: 'showTools', hint: '' },
+      showSkills: {
+        label: 'showSkills',
+        hint: '显示技能活动行(正在调用的 Skill)。',
+      },
+      showMcp: { label: 'showMcp', hint: '显示 MCP 活动行。' },
       showAgents: { label: 'showAgents', hint: '' },
       showTodos: { label: 'showTodos', hint: '' },
       showMemoryUsage: { label: 'showMemoryUsage', hint: '' },
@@ -134,6 +147,10 @@ export const zh: Messages = {
       showOutputStyle: { label: 'showOutputStyle', hint: '' },
       showSessionStartDate: { label: 'showSessionStartDate', hint: '' },
       showLastResponseAt: { label: 'showLastResponseAt', hint: '' },
+      showCompactions: {
+        label: 'showCompactions',
+        hint: '显示本次会话已发生的上下文压缩次数(手动 /compact 或自动)。',
+      },
       showConfigCounts: {
         label: 'showConfigCounts',
         hint: '显示 CLAUDE.md / 规则 / MCP / hooks 的数量。',
@@ -168,7 +185,9 @@ export const zh: Messages = {
     sections: {
       contextDisplay: '上下文显示',
       usageDisplay: '使用率显示',
+      tools: '工具',
       model: '模型',
+      advisor: '顾问',
       time: '时间',
       project: '项目',
       promptCache: 'Prompt 缓存',
@@ -178,6 +197,18 @@ export const zh: Messages = {
     fields: {
       contextValue: { label: 'contextValue', hint: '上下文数值的展示形式。' },
       autocompactBuffer: { label: 'autocompactBuffer', hint: '' },
+      autoCompactWindow: {
+        label: 'autoCompactWindow',
+        hint: '覆盖用作上下文分母的 token 窗口。留空表示自动。',
+      },
+      toolNameMaxLength: {
+        label: 'toolNameMaxLength',
+        hint: '将工具名称截断到该字符数(0 = 不限制)。',
+      },
+      toolsMaxVisible: {
+        label: 'toolsMaxVisible',
+        hint: '工具行上显示的最大工具数量。',
+      },
       usageValue: { label: 'usageValue', hint: '' },
       usageCompact: {
         label: 'usageCompact',
@@ -187,6 +218,14 @@ export const zh: Messages = {
       modelOverride: {
         label: 'modelOverride',
         hint: '若设置,该字符串将完全替换模型显示名称。最多 80 个字符。',
+      },
+      providerName: {
+        label: 'providerName',
+        hint: '为自定义代理指定的提供方标签。留空时回退到自动识别。最多 40 个字符。',
+      },
+      advisorOverride: {
+        label: 'advisorOverride',
+        hint: '手动覆盖顾问模型的显示名称。最多 80 个字符。',
       },
       timeFormat: { label: 'timeFormat', hint: '' },
       addedDirsLayout: { label: 'addedDirsLayout', hint: '' },
@@ -202,9 +241,17 @@ export const zh: Messages = {
         label: 'externalUsageFreshnessMs',
         hint: '外部快照被视为过期之前的最大年龄。',
       },
+      externalUsageWritePath: {
+        label: 'externalUsageWritePath',
+        hint: '写出使用率快照的路径,便于在多台机器之间共享。',
+      },
       customLine: {
         label: 'customLine',
         hint: '追加到末尾的自由格式额外一行。最多 80 个字符。',
+      },
+      customLinePosition: {
+        label: 'customLinePosition',
+        hint: '自定义行显示在最前还是最后。',
       },
     },
     options: {
@@ -217,12 +264,22 @@ export const zh: Messages = {
       autocompactBuffer: { enabled: '启用', disabled: '禁用' },
       usageValue: { percent: '百分比', remaining: '剩余' },
       modelFormat: { full: '完整', compact: '紧凑', short: '简短' },
-      timeFormat: { relative: '相对', absolute: '绝对', both: '两者' },
+      timeFormat: {
+        relative: '相对',
+        absolute: '绝对',
+        both: '两者',
+        elapsed: '已用时',
+        elapsedAndAbsolute: '已用时 + 绝对',
+      },
       addedDirsLayout: { inline: '同行', line: '独立行' },
+      customLinePosition: { first: '最前', last: '最后' },
     },
     placeholders: {
       modelOverride: '例如 Claude',
+      providerName: '自动识别',
       externalUsagePath: '/path/to/usage.json',
+      externalUsageWritePath: '/path/to/write.json',
+      autoCompactWindow: '自动',
     },
   },
   thresholds: {

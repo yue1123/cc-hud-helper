@@ -111,6 +111,14 @@ export const en = {
     sections: { visibility: 'Visibility toggles', mergeGroups: 'Merge groups' },
     fields: {
       showModel: { label: 'showModel', hint: 'Show the [Model name] badge.' },
+      showProvider: {
+        label: 'showProvider',
+        hint: 'Show the provider label (custom name or auto-detected Bedrock/Vertex/Enterprise) before the model name.',
+      },
+      showAdvisor: {
+        label: 'showAdvisor',
+        hint: 'Show the advisor model on the project line when /advisor is configured.',
+      },
       showProject: { label: 'showProject', hint: 'Show the project path.' },
       showAddedDirs: { label: 'showAddedDirs', hint: 'Show added directories.' },
       showContextBar: { label: 'showContextBar', hint: 'Show the context-usage bar.' },
@@ -122,6 +130,11 @@ export const en = {
       usageBarEnabled: { label: 'usageBarEnabled', hint: 'Show bars for usage values.' },
       showResetLabel: { label: 'showResetLabel', hint: 'Show reset countdown for usage.' },
       showTools: { label: 'showTools', hint: '' },
+      showSkills: {
+        label: 'showSkills',
+        hint: 'Show the skills activity line (active Skill invocations).',
+      },
+      showMcp: { label: 'showMcp', hint: 'Show the MCP activity line.' },
       showAgents: { label: 'showAgents', hint: '' },
       showTodos: { label: 'showTodos', hint: '' },
       showMemoryUsage: { label: 'showMemoryUsage', hint: '' },
@@ -133,6 +146,10 @@ export const en = {
       showOutputStyle: { label: 'showOutputStyle', hint: '' },
       showSessionStartDate: { label: 'showSessionStartDate', hint: '' },
       showLastResponseAt: { label: 'showLastResponseAt', hint: '' },
+      showCompactions: {
+        label: 'showCompactions',
+        hint: 'Show how many context compactions (manual /compact or auto) have occurred this session.',
+      },
       showConfigCounts: {
         label: 'showConfigCounts',
         hint: 'Show counts of CLAUDE.md / rules / MCPs / hooks.',
@@ -167,7 +184,9 @@ export const en = {
     sections: {
       contextDisplay: 'Context display',
       usageDisplay: 'Usage display',
+      tools: 'Tools',
       model: 'Model',
+      advisor: 'Advisor',
       time: 'Time',
       project: 'Project',
       promptCache: 'Prompt cache',
@@ -177,6 +196,18 @@ export const en = {
     fields: {
       contextValue: { label: 'contextValue', hint: 'What to show as the context number.' },
       autocompactBuffer: { label: 'autocompactBuffer', hint: '' },
+      autoCompactWindow: {
+        label: 'autoCompactWindow',
+        hint: 'Override the token window used as the context denominator. Leave empty for auto.',
+      },
+      toolNameMaxLength: {
+        label: 'toolNameMaxLength',
+        hint: 'Truncate tool names to this many characters (0 = no limit).',
+      },
+      toolsMaxVisible: {
+        label: 'toolsMaxVisible',
+        hint: 'Maximum number of tools shown on the tools line.',
+      },
       usageValue: { label: 'usageValue', hint: '' },
       usageCompact: {
         label: 'usageCompact',
@@ -186,6 +217,14 @@ export const en = {
       modelOverride: {
         label: 'modelOverride',
         hint: 'If set, this string replaces the model display name entirely. Max 80 chars.',
+      },
+      providerName: {
+        label: 'providerName',
+        hint: 'Explicit provider label for custom proxies. Falls back to auto-detection when empty. Max 40 chars.',
+      },
+      advisorOverride: {
+        label: 'advisorOverride',
+        hint: 'Manual override for the displayed advisor name. Max 80 chars.',
       },
       timeFormat: { label: 'timeFormat', hint: '' },
       addedDirsLayout: { label: 'addedDirsLayout', hint: '' },
@@ -201,9 +240,17 @@ export const en = {
         label: 'externalUsageFreshnessMs',
         hint: "Max age of the external snapshot before it's considered stale.",
       },
+      externalUsageWritePath: {
+        label: 'externalUsageWritePath',
+        hint: 'Path to write a usage snapshot to, for sharing across machines.',
+      },
       customLine: {
         label: 'customLine',
         hint: 'Free-form extra line appended at the end. Max 80 chars.',
+      },
+      customLinePosition: {
+        label: 'customLinePosition',
+        hint: 'Whether the custom line appears first or last.',
       },
     },
     options: {
@@ -216,12 +263,22 @@ export const en = {
       autocompactBuffer: { enabled: 'enabled', disabled: 'disabled' },
       usageValue: { percent: 'percent', remaining: 'remaining' },
       modelFormat: { full: 'full', compact: 'compact', short: 'short' },
-      timeFormat: { relative: 'relative', absolute: 'absolute', both: 'both' },
+      timeFormat: {
+        relative: 'relative',
+        absolute: 'absolute',
+        both: 'both',
+        elapsed: 'elapsed',
+        elapsedAndAbsolute: 'elapsed + absolute',
+      },
       addedDirsLayout: { inline: 'inline', line: 'line' },
+      customLinePosition: { first: 'first', last: 'last' },
     },
     placeholders: {
       modelOverride: 'e.g. Claude',
+      providerName: 'auto-detect',
       externalUsagePath: '/path/to/usage.json',
+      externalUsageWritePath: '/path/to/write.json',
+      autoCompactWindow: 'auto',
     },
   },
   thresholds: {

@@ -112,6 +112,8 @@ interface SessionTokenUsage {
 
 interface TranscriptData {
   tools: ToolEntry[]
+  skills: string[]
+  mcpServers: string[]
   agents: AgentEntry[]
   todos: TodoItem[]
   sessionStart?: Date
@@ -120,6 +122,8 @@ interface TranscriptData {
   sessionTokens?: SessionTokenUsage
   lastCompactBoundaryAt?: Date
   lastCompactPostTokens?: number
+  compactionCount?: number
+  advisorModel?: string
 }
 
 interface LineDiff {
@@ -213,6 +217,8 @@ export function buildMockRenderContext(config: HudConfig): RenderContext {
 
   const transcript: TranscriptData = {
     tools,
+    skills: MOCK_CONTEXT.skills,
+    mcpServers: MOCK_CONTEXT.mcpServers,
     agents,
     todos: MOCK_CONTEXT.todos,
     sessionStart: new Date(now - 14 * 60_000),
@@ -224,6 +230,9 @@ export function buildMockRenderContext(config: HudConfig): RenderContext {
       cacheReadTokens: MOCK_CONTEXT.context.cacheReadTokens,
     },
     lastAssistantResponseAt: new Date(now - 12_000),
+    lastCompactBoundaryAt: new Date(now - 8 * 60_000),
+    compactionCount: MOCK_CONTEXT.session.compactionCount,
+    advisorModel: MOCK_CONTEXT.advisorModel,
   }
 
   const stdin: StdinData = {
@@ -277,7 +286,11 @@ export function buildMockRenderContext(config: HudConfig): RenderContext {
     extraLabel: null,
     outputStyle: MOCK_CONTEXT.outputStyle,
     claudeCodeVersion: MOCK_CONTEXT.claudeCodeVersion,
-    effortLevel: MOCK_CONTEXT.effort.level,
-    effortSymbol: MOCK_CONTEXT.effort.symbol,
+    // Upstream's entry point (index.ts) only populates effort on the context
+    // when showEffortLevel is on — and the model badge renders effort purely
+    // on its presence, without re-checking the flag. Mirror that gating here
+    // so toggling showEffortLevel actually changes the preview.
+    effortLevel: config.display.showEffortLevel ? MOCK_CONTEXT.effort.level : undefined,
+    effortSymbol: config.display.showEffortLevel ? MOCK_CONTEXT.effort.symbol : undefined,
   }
 }
