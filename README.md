@@ -1,3 +1,5 @@
+<!-- Language / 语言: **English** · [简体中文](./README.zh-CN.md) -->
+
 # claude-uhd-cc
 
 A visual configuration tool for [**claude-hud**](https://github.com/jarrodwatts/claude-hud) — the statusline plugin for Claude Code.
