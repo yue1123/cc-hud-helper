@@ -1,48 +1,64 @@
 # claude-uhd-cc
 
-This template should help get you started developing with Vue 3 in Vite.
+A visual configuration tool for [**claude-hud**](https://github.com/jarrodwatts/claude-hud) — the statusline plugin for Claude Code.
 
-## Recommended IDE Setup
+Instead of hand-editing `~/.claude/plugins/claude-hud/config.json`, you tweak switches, sliders, colors, and element order in a form and watch the resulting statusline re-render **live**, sized to look like the real terminal output. When you're done, export the `config.json` or share a link.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+It's a **pure static frontend** — no backend, no account, no cloud sync. Everything runs in the browser, so it's cheap to host and easy to share.
 
-## Recommended Browser Setup
+## What it does
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- **Live preview** — a sticky, terminal-styled preview of your statusline that updates as you edit. This is the core of the tool.
+- **Visual editor** — tabbed form covering layout, elements, git, display options, thresholds, and colors, plus a raw-JSON escape hatch.
+- **Presets** — one-click starting points: Default, Minimal, Full-featured, CJK-optimized, Dev mode, and Compact one-liner.
+- **Import / Export** — drop or paste an existing `config.json`, or download the config you built.
+- **Share via URL** — the config is compressed into the URL hash (LZ-string), so a link fully reconstructs a configuration with no server involved.
+- **Validation & diagnostics** — out-of-range numbers are clamped, illegal enums/colors fall back to defaults, and unknown elements are flagged — all surfaced as inline hints and a summary banner.
+- **Unknown-field passthrough** — fields the tool doesn't recognize (e.g. newer upstream additions) are **never silently stripped**; they're preserved on export.
+- **Bilingual UI** — English and 简体中文, with a language toggle.
 
-## Type Support for `.vue` Imports in TS
+## How it works
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+The Pinia store holds the raw config JSON as the single source of truth. A derived `parsedConfig` (via `mergeConfig`) drives the preview, while a diff against the raw JSON produces the diagnostics. On every change the config is debounce-written to the URL hash.
 
-## Customize configuration
+The `claude-hud` schema (`src/lib/hud-schema.ts`) and merge logic are hand-copied from upstream (tracked as a git submodule under `vendor/claude-hud`); a contract test guards against drift.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+Built with **Vue 3 + TypeScript + Vite**, **Pinia** for state, and **vue-i18n** for the en/zh keysets.
 
-## Project Setup
+## Project setup
 
 ```sh
 pnpm install
 ```
 
-### Compile and Hot-Reload for Development
+### Develop (hot-reload)
 
 ```sh
 pnpm dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### Build for production (static bundle)
 
 ```sh
 pnpm build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+Output is a static bundle deployable to GitHub Pages, Vercel, or any static host.
+
+### Test
 
 ```sh
-pnpm lint
+pnpm test        # watch mode
+pnpm test:run    # single run
 ```
+
+### Lint & format
+
+```sh
+pnpm lint        # oxlint + eslint
+pnpm format      # oxfmt
+```
+
+## Recommended IDE setup
+
+[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (disable Vetur). We use `vue-tsc` for type checking of `.vue` files.
