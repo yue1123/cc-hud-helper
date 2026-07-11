@@ -68,7 +68,7 @@ function cancel() {
   border: 1px solid var(--border-dim);
   color: var(--fg-dim);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 16px;
   padding: 3px 10px;
   cursor: pointer;
 }
@@ -101,11 +101,11 @@ function cancel() {
 }
 .item-label {
   color: var(--accent);
-  font-size: 12px;
+  font-size: 16px;
 }
 .item-desc {
   color: var(--fg-dim);
-  font-size: 11px;
+  font-size: 16px;
   margin-top: 2px;
   line-height: 1.4;
 }

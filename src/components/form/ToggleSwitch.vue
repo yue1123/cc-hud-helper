@@ -26,7 +26,7 @@ function toggle() {
   border-radius: 2px;
   padding: 4px 10px 4px 6px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 16px;
   color: var(--fg-dim);
   cursor: pointer;
 }

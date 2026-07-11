@@ -28,7 +28,7 @@ defineEmits<{ (e: 'update:modelValue', v: string | number): void }>()
   border-radius: 2px;
   padding: 4px 8px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 16px;
 }
 .select:focus {
   outline: none;

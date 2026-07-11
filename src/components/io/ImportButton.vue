@@ -97,7 +97,7 @@ function apply() {
   border: 1px solid var(--border-dim);
   color: var(--fg-dim);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 16px;
   padding: 3px 10px;
   cursor: pointer;
 }
@@ -126,16 +126,16 @@ function apply() {
 .title {
   margin: 0;
   color: var(--accent);
-  font-size: 14px;
+  font-size: 16px;
 }
 .hint {
   margin: 0;
   color: var(--fg-dim);
-  font-size: 11px;
+  font-size: 16px;
 }
 input[type='file'] {
   color: var(--fg-dim);
-  font-size: 11px;
+  font-size: 16px;
 }
 textarea {
   background: var(--bg-deep);
@@ -143,13 +143,13 @@ textarea {
   border: 1px solid var(--border-dim);
   padding: var(--space-2);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 16px;
   min-height: 220px;
   resize: vertical;
 }
 .error {
   color: var(--accent-bad);
-  font-size: 12px;
+  font-size: 16px;
   margin: 0;
 }
 .actions {
@@ -163,7 +163,7 @@ textarea {
   border: 1px solid var(--border-dim);
   color: var(--fg-dim);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 16px;
   padding: 4px 12px;
   cursor: pointer;
 }

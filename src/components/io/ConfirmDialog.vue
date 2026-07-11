@@ -49,12 +49,12 @@ defineEmits<{ (e: 'confirm'): void; (e: 'cancel'): void }>()
 .dialog-title {
   margin: 0 0 var(--space-2);
   color: var(--accent);
-  font-size: 14px;
+  font-size: 16px;
 }
 .dialog-message {
   margin: 0 0 var(--space-4);
   color: var(--fg-base);
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.55;
 }
 .dialog-actions {
@@ -68,7 +68,7 @@ defineEmits<{ (e: 'confirm'): void; (e: 'cancel'): void }>()
   border: 1px solid var(--border-dim);
   color: var(--fg-dim);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 16px;
   padding: 4px 12px;
   cursor: pointer;
 }

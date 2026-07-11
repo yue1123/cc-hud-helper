@@ -42,7 +42,7 @@ const isEmpty = computed(() => store.diagnostics.length === 0)
   border-top: 1px dashed var(--border-dash);
   border-bottom: 1px dashed var(--border-dash);
   padding: var(--space-2) var(--space-4);
-  font-size: 11px;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
@@ -54,7 +54,7 @@ const isEmpty = computed(() => store.diagnostics.length === 0)
   color: var(--accent-warm);
 }
 .icon {
-  font-size: 12px;
+  font-size: 16px;
 }
 .kind-pill {
   background: var(--bg-elevated);
@@ -73,6 +73,6 @@ const isEmpty = computed(() => store.diagnostics.length === 0)
   margin: 0 2px;
   color: var(--accent-magenta);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 16px;
 }
 </style>

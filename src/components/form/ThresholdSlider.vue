@@ -54,7 +54,7 @@ input[type='range'] {
   border-radius: 2px;
   padding: 3px 6px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 16px;
 }
 .num:focus {
   outline: none;
@@ -62,6 +62,6 @@ input[type='range'] {
 }
 .suffix {
   color: var(--fg-dim);
-  font-size: 11px;
+  font-size: 16px;
 }
 </style>

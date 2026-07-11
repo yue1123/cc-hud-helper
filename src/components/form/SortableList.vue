@@ -75,7 +75,7 @@ function onDragOver(e: DragEvent) {
   border: 1px solid var(--border-dim);
   border-radius: 2px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 16px;
   color: var(--fg-base);
   cursor: grab;
 }
@@ -96,7 +96,7 @@ function onDragOver(e: DragEvent) {
   background: transparent;
   border: 1px solid var(--border-dim);
   color: var(--fg-dim);
-  font-size: 10px;
+  font-size: 16px;
   width: 22px;
   height: 20px;
   cursor: pointer;

@@ -129,7 +129,7 @@ function setMergeGroups(v: HudElement[][]) {
   flex-direction: column;
 }
 .section-title {
-  font-size: 11px;
+  font-size: 16px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--fg-dim);
