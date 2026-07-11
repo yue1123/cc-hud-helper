@@ -1,47 +1,47 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useI18n } from 'vue-i18n'
-import HudPreviewXterm from '@/preview/HudPreviewXterm.vue'
-import TabNav from '@/components/shell/TabNav.vue'
-import LayoutTab from '@/components/editor/LayoutTab.vue'
-import ElementsTab from '@/components/editor/ElementsTab.vue'
-import GitTab from '@/components/editor/GitTab.vue'
-import DisplayTab from '@/components/editor/DisplayTab.vue'
-import ThresholdsTab from '@/components/editor/ThresholdsTab.vue'
-import ColorsTab from '@/components/editor/ColorsTab.vue'
-import RawJsonTab from '@/components/editor/RawJsonTab.vue'
-import PresetMenu from '@/components/io/PresetMenu.vue'
-import ImportButton from '@/components/io/ImportButton.vue'
-import ExportButton from '@/components/io/ExportButton.vue'
-import ShareButton from '@/components/io/ShareButton.vue'
-import ValidationBanner from '@/components/shell/ValidationBanner.vue'
-import { useConfigStore } from '@/stores/config'
+import { ref, computed } from "vue";
+import { useI18n } from "vue-i18n";
+import HudPreviewXterm from "@/preview/HudPreviewXterm.vue";
+import TabNav from "@/components/shell/TabNav.vue";
+import LayoutTab from "@/components/editor/LayoutTab.vue";
+import ElementsTab from "@/components/editor/ElementsTab.vue";
+import GitTab from "@/components/editor/GitTab.vue";
+import DisplayTab from "@/components/editor/DisplayTab.vue";
+import ThresholdsTab from "@/components/editor/ThresholdsTab.vue";
+import ColorsTab from "@/components/editor/ColorsTab.vue";
+import RawJsonTab from "@/components/editor/RawJsonTab.vue";
+import PresetMenu from "@/components/io/PresetMenu.vue";
+import ImportButton from "@/components/io/ImportButton.vue";
+import ExportButton from "@/components/io/ExportButton.vue";
+import ShareButton from "@/components/io/ShareButton.vue";
+import ValidationBanner from "@/components/shell/ValidationBanner.vue";
+import { useConfigStore } from "@/stores/config";
 
-const { t, locale } = useI18n()
-const store = useConfigStore()
+const { t, locale } = useI18n();
+const store = useConfigStore();
 
 const tabs = computed(() => [
-  { value: 'layout', label: t('tabs.layout') },
-  { value: 'elements', label: t('tabs.elements') },
-  { value: 'git', label: t('tabs.git') },
-  { value: 'display', label: t('tabs.display') },
-  { value: 'thresholds', label: t('tabs.thresholds') },
-  { value: 'colors', label: t('tabs.colors') },
-  { value: 'rawJson', label: t('tabs.rawJson') },
-])
+  { value: "layout", label: t("tabs.layout") },
+  { value: "elements", label: t("tabs.elements") },
+  { value: "git", label: t("tabs.git") },
+  { value: "display", label: t("tabs.display") },
+  { value: "thresholds", label: t("tabs.thresholds") },
+  { value: "colors", label: t("tabs.colors") },
+  { value: "rawJson", label: t("tabs.rawJson") },
+]);
 
-const activeTab = ref('layout')
-const parsedConfig = computed(() => store.parsedConfig)
+const activeTab = ref("layout");
+const parsedConfig = computed(() => store.parsedConfig);
 
 function toggleLocale() {
-  locale.value = locale.value === 'en' ? 'zh' : 'en'
+  locale.value = locale.value === "en" ? "zh" : "en";
 }
 </script>
 
 <template>
   <div id="app-shell">
     <header class="topbar">
-      <span class="logo">▆ claude-hud.cfg</span>
+      <span class="logo">{} cc-hud.cfg</span>
       <PresetMenu />
       <ImportButton />
       <ExportButton />

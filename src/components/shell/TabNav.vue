@@ -1,9 +1,9 @@
 <script setup lang="ts">
 defineProps<{
-  modelValue: string
-  tabs: Array<{ value: string; label: string }>
-}>()
-defineEmits<{ (e: 'update:modelValue', v: string): void }>()
+  modelValue: string;
+  tabs: Array<{ value: string; label: string }>;
+}>();
+defineEmits<{ (e: "update:modelValue", v: string): void }>();
 </script>
 
 <template>
@@ -23,6 +23,8 @@ defineEmits<{ (e: 'update:modelValue', v: string): void }>()
 
 <style scoped>
 .tab-nav {
+  position: sticky;
+  top: 0;
   display: flex;
   gap: var(--space-3);
   padding: var(--space-3) var(--space-4) 0;

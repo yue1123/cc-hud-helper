@@ -1,31 +1,31 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, watch } from 'vue'
-import { Terminal } from '@xterm/xterm'
-import { FitAddon } from '@xterm/addon-fit'
-import '@xterm/xterm/css/xterm.css'
-import type { HudConfig } from '@/lib/hud-schema'
-import { renderToString } from '@/preview/upstream-bridge'
+import { onMounted, onUnmounted, ref, watch } from "vue";
+import { Terminal } from "@xterm/xterm";
+import { FitAddon } from "@xterm/addon-fit";
+import "@xterm/xterm/css/xterm.css";
+import type { HudConfig } from "@/lib/hud-schema";
+import { renderToString } from "@/preview/upstream-bridge";
 
-const props = defineProps<{ config: HudConfig }>()
+const props = defineProps<{ config: HudConfig }>();
 
-const host = ref<HTMLDivElement>()
-let term: Terminal | null = null
-let fit: FitAddon | null = null
+const host = ref<HTMLDivElement>();
+let term: Terminal | null = null;
+let fit: FitAddon | null = null;
 
 function getMonoFont(): string {
-  if (typeof window === 'undefined') return 'monospace'
-  const computed = getComputedStyle(document.body).fontFamily
-  return computed || 'monospace'
+  if (typeof window === "undefined") return "monospace";
+  const computed = getComputedStyle(document.body).fontFamily;
+  return computed || "monospace";
 }
 
 function redraw() {
-  if (!term) return
-  term.reset()
-  term.write(renderToString(props.config))
+  if (!term) return;
+  term.reset();
+  term.write(renderToString(props.config));
 }
 
 onMounted(() => {
-  if (!host.value) return
+  if (!host.value) return;
   term = new Terminal({
     cols: 120,
     rows: 12,
@@ -33,41 +33,41 @@ onMounted(() => {
     fontSize: 13,
     lineHeight: 1.4,
     theme: {
-      background: '#050811',
-      foreground: '#cbd5e1',
-      cursor: 'transparent',
-      cursorAccent: 'transparent',
-      selectionBackground: 'rgba(56, 189, 248, 0.3)',
+      background: "#050811",
+      foreground: "#cbd5e1",
+      cursor: "transparent",
+      cursorAccent: "transparent",
+      selectionBackground: "rgba(56, 189, 248, 0.3)",
     },
     cursorBlink: false,
-    cursorStyle: 'bar',
+    cursorStyle: "bar",
     disableStdin: true,
     scrollback: 0,
     convertEol: true,
-  })
-  fit = new FitAddon()
-  term.loadAddon(fit)
-  term.open(host.value)
+  });
+  fit = new FitAddon();
+  term.loadAddon(fit);
+  term.open(host.value);
   requestAnimationFrame(() => {
-    fit?.fit()
-    redraw()
-  })
+    fit?.fit();
+    redraw();
+  });
 
-  window.addEventListener('resize', onResize)
-})
+  window.addEventListener("resize", onResize);
+});
 
 function onResize() {
-  fit?.fit()
-  redraw()
+  fit?.fit();
+  redraw();
 }
 
-watch(() => props.config, redraw, { deep: true })
+watch(() => props.config, redraw, { deep: true });
 
 onUnmounted(() => {
-  window.removeEventListener('resize', onResize)
-  term?.dispose()
-  term = null
-})
+  window.removeEventListener("resize", onResize);
+  term?.dispose();
+  term = null;
+});
 </script>
 
 <template>
@@ -84,7 +84,7 @@ onUnmounted(() => {
   padding: var(--space-2);
 }
 .xterm-host {
-  min-height: 240px;
+  min-height: 280px;
 }
 :deep(.xterm) {
   padding: 0;
