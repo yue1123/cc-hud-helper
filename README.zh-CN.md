@@ -1,6 +1,7 @@
-<!-- 语言 / Language: [English](./README.md) · **简体中文** -->
-
 # claude-uhd-cc
+
+[English](./README.md) · **简体中文**
+
 
 一个为 [**claude-hud**](https://github.com/jarrodwatts/claude-hud)(Claude Code 的状态栏插件)打造的可视化配置工具。
 
