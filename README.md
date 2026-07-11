@@ -17,14 +17,6 @@ Instead of hand-editing `~/.claude/plugins/claude-hud/config.json`, you tweak sw
 - **Unknown-field passthrough** — fields the tool doesn't recognize (e.g. newer upstream additions) are **never silently stripped**; they're preserved on export.
 - **Bilingual UI** — English and 简体中文, with a language toggle.
 
-## How it works
-
-The Pinia store holds the raw config JSON as the single source of truth. A derived `parsedConfig` (via `mergeConfig`) drives the preview, while a diff against the raw JSON produces the diagnostics. On every change the config is debounce-written to the URL hash.
-
-The `claude-hud` schema (`src/lib/hud-schema.ts`) and merge logic are hand-copied from upstream (tracked as a git submodule under `vendor/claude-hud`); a contract test guards against drift.
-
-Built with **Vue 3 + TypeScript + Vite**, **Pinia** for state, and **vue-i18n** for the en/zh keysets.
-
 ## Project setup
 
 ```sh

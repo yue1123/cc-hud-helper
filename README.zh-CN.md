@@ -17,14 +17,6 @@
 - **未知字段透传** —— 工具不认识的字段(例如上游新增的字段)**绝不会被静默丢弃**,导出时会原样保留。
 - **双语界面** —— English 与简体中文,可一键切换语言。
 
-## 工作原理
-
-Pinia store 以原始配置 JSON 作为唯一数据源(single source of truth)。派生出的 `parsedConfig`(经由 `mergeConfig`)驱动预览,而它与原始 JSON 的差异则生成诊断信息。每次改动都会以防抖(debounce)的方式写入 URL hash。
-
-`claude-hud` 的 schema(`src/lib/hud-schema.ts`)与合并逻辑是从上游手动拷贝而来(上游以 git submodule 形式挂在 `vendor/claude-hud` 下),并有契约测试防止两者漂移。
-
-技术栈:**Vue 3 + TypeScript + Vite**,状态管理用 **Pinia**,中英文案由 **vue-i18n** 管理。
-
 ## 项目搭建
 
 ```sh
