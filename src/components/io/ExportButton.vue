@@ -71,7 +71,7 @@ async function copyToClipboard() {
   border: 1px solid var(--border-dim);
   color: var(--fg-dim);
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   padding: 3px 10px;
   cursor: pointer;
 }
@@ -86,7 +86,7 @@ async function copyToClipboard() {
   background: var(--bg-elevated);
   border: 1px solid var(--accent);
   color: var(--accent);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   padding: 2px 8px;
   white-space: nowrap;
   z-index: 99;

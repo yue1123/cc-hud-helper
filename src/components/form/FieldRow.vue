@@ -79,11 +79,11 @@ function formatDiagnostic(d: Diagnostic): string {
 }
 .label-text {
   color: var(--fg-base);
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }
 .label-path {
   color: var(--fg-dim);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   font-family: var(--font-mono);
 }
 .field-control {
@@ -95,7 +95,7 @@ function formatDiagnostic(d: Diagnostic): string {
 .field-hint {
   grid-column: 2 / -1;
   color: var(--fg-dim);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   line-height: 1.4;
 }
 .diag {

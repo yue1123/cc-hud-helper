@@ -33,7 +33,7 @@ defineEmits<{ (e: 'update:modelValue', v: string): void }>()
   border: none;
   color: var(--fg-dim);
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   padding: 6px 0;
   margin-bottom: -1px;
   border-bottom: 1px solid transparent;

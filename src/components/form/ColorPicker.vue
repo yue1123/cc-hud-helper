@@ -114,7 +114,7 @@ function setHex(e: Event) {
   border: 1px solid var(--border-dim);
   color: var(--fg-dim);
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   padding: 2px 8px;
   cursor: pointer;
 }
@@ -152,13 +152,13 @@ function setHex(e: Event) {
   border-radius: 2px;
   padding: 4px 8px;
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }
 .hex-row input {
   width: 100px;
 }
 .hint {
   color: var(--fg-dim);
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }
 </style>

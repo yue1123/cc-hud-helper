@@ -97,7 +97,7 @@ function apply() {
   border: 1px solid var(--border-dim);
   color: var(--fg-dim);
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   padding: 3px 10px;
   cursor: pointer;
 }
@@ -126,16 +126,16 @@ function apply() {
 .title {
   margin: 0;
   color: var(--accent);
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }
 .hint {
   margin: 0;
   color: var(--fg-dim);
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }
 input[type='file'] {
   color: var(--fg-dim);
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }
 textarea {
   background: var(--bg-deep);
@@ -143,13 +143,13 @@ textarea {
   border: 1px solid var(--border-dim);
   padding: var(--space-2);
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   min-height: 220px;
   resize: vertical;
 }
 .error {
   color: var(--accent-bad);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   margin: 0;
 }
 .actions {
@@ -163,7 +163,7 @@ textarea {
   border: 1px solid var(--border-dim);
   color: var(--fg-dim);
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   padding: 4px 12px;
   cursor: pointer;
 }

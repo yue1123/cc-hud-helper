@@ -28,7 +28,7 @@ defineEmits<{ (e: 'update:modelValue', v: string): void }>()
   border-radius: 2px;
   padding: 4px 8px;
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   flex: 1;
   min-width: 0;
 }

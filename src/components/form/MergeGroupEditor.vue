@@ -112,7 +112,7 @@ function onAddSelect(gIdx: number, e: Event) {
 }
 .group-label {
   color: var(--fg-dim);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   margin-right: var(--space-2);
 }
 .chip {
@@ -123,7 +123,7 @@ function onAddSelect(gIdx: number, e: Event) {
   border: 1px solid var(--border-dash);
   padding: 2px 6px;
   border-radius: 2px;
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }
 .chip .x {
   background: transparent;
@@ -144,7 +144,7 @@ function onAddSelect(gIdx: number, e: Event) {
   border: 1px dashed var(--border-dash);
   color: var(--fg-dim);
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   padding: 2px 4px;
 }
 .group-spacer {
@@ -154,7 +154,7 @@ function onAddSelect(gIdx: number, e: Event) {
   background: transparent;
   border: 1px solid var(--border-dim);
   color: var(--fg-dim);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   padding: 2px 6px;
   cursor: pointer;
 }
@@ -168,7 +168,7 @@ function onAddSelect(gIdx: number, e: Event) {
   border: 1px dashed var(--border-dash);
   color: var(--fg-dim);
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   padding: 4px 10px;
   cursor: pointer;
 }
@@ -178,6 +178,6 @@ function onAddSelect(gIdx: number, e: Event) {
 }
 .empty {
   color: var(--fg-dim);
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }
 </style>

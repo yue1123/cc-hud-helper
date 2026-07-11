@@ -42,7 +42,7 @@ function onInput(e: Event) {
   border-radius: 2px;
   padding: 4px 8px;
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   width: 90px;
 }
 .number-input:focus {

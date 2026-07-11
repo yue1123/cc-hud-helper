@@ -23,6 +23,7 @@
   --color-named-brightMagenta: #d8b4fe;
 
   --font-mono: ui-monospace, "JetBrains Mono", "Fira Code", "SF Mono", Menlo, monospace;
+  --font-size-base: 16px;
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -42,7 +43,7 @@ body,
   background: var(--bg-base);
   color: var(--fg-base);
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   line-height: 1.5;
 }
 
@@ -71,5 +72,5 @@ body,
 
 .placeholder {
   color: var(--fg-dim);
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }

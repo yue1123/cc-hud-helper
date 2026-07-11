@@ -79,7 +79,7 @@ function toggleLocale() {
 }
 .topbar-hint {
   color: var(--fg-dim);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   margin-left: var(--space-2);
 }
 .lang-toggle {
@@ -87,7 +87,7 @@ function toggleLocale() {
   border: 1px solid var(--border-dim);
   color: var(--fg-dim);
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   padding: 3px 8px;
   cursor: pointer;
 }
@@ -105,7 +105,7 @@ function toggleLocale() {
 }
 .stage-label {
   color: var(--fg-dim);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: var(--space-2);
@@ -115,6 +115,6 @@ function toggleLocale() {
 }
 .placeholder {
   color: var(--fg-dim);
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }
 </style>

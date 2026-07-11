@@ -61,7 +61,7 @@ function onBlur() {
 }
 .hint {
   color: var(--fg-dim);
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }
 .json-textarea {
   background: var(--bg-deep);
@@ -70,7 +70,7 @@ function onBlur() {
   border-radius: 2px;
   padding: var(--space-3);
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   line-height: 1.55;
   min-height: 320px;
   resize: vertical;
@@ -84,6 +84,6 @@ function onBlur() {
 }
 .json-error {
   color: var(--accent-bad);
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }
 </style>

@@ -295,7 +295,7 @@ function setNullable(path: string, v: number | null) {
   flex-direction: column;
 }
 .section-title {
-  font-size: 16px;
+  font-size: var(--font-size-base);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--fg-dim);
