@@ -34,6 +34,8 @@ export const zh: Messages = {
   import: {
     title: '导入 config.json',
     hint: '粘贴 JSON、拖入文件,或者选取一个文件。已有配置会被覆盖。',
+    sourceHint: '你现有的配置通常在这里 —— 把它拖进来或粘贴进来继续编辑:',
+    noConfigHint: '还没有配置?直接从上方预设起步即可。',
     apply: '应用',
     errorPrefix: '⚠',
     buttonLabel: '[ 导入 ]',
@@ -41,9 +43,15 @@ export const zh: Messages = {
     nonObjectError: '配置必须是 JSON 对象',
   },
   export: {
-    downloadLabel: '[ 导出 ]',
-    copyLabel: '[ 复制 ]',
+    title: '导出 config.json',
+    buttonLabel: '[ 导出 ]',
+    destHint: '把这份配置保存为 config.json,放到这里:',
+    effectHint: '新开的 Claude Code 会话即会使用新配置。',
+    copyPath: '复制路径',
+    downloadLabel: '[ 下载 config.json ]',
+    copyLabel: '[ 复制 JSON ]',
     copyTooltip: '复制 JSON 到剪贴板',
+    close: '关闭',
   },
   share: {
     buttonLabel: '[ 分享 ]',
@@ -56,6 +64,7 @@ export const zh: Messages = {
     linkCopied: '链接已复制',
     downloaded: '已下载',
     jsonCopied: '已复制到剪贴板',
+    pathCopied: '路径已复制',
     copyFailed: '复制失败 — 请查看控制台',
   },
   forms: {

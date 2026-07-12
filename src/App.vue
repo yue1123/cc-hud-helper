@@ -42,7 +42,7 @@ function toggleLocale() {
 <template>
   <div id="app-shell">
     <header class="topbar">
-      <span class="logo">{} cc-hud.cfg</span>
+      <span class="logo">{} cc-hud helper</span>
       <PresetMenu />
       <ImportButton />
       <ExportButton />
@@ -56,7 +56,7 @@ function toggleLocale() {
 
     <div class="sticky-head">
       <section class="preview-stage">
-        <div class="stage-label">PREVIEW (live)</div>
+        <div class="stage-label">PREVIEW (mock data)</div>
         <HudPreviewXterm :config="parsedConfig" />
       </section>
 

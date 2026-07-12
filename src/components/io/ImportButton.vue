@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useConfigStore } from '@/stores/config'
+import { CONFIG_PATHS } from '@/lib/constants'
 import type { JsonObject } from '@/lib/path-set'
 
 const { t } = useI18n()
@@ -71,6 +72,12 @@ function apply() {
     <div v-if="open" class="modal-backdrop" @click.self="closeModal">
       <div class="modal" @dragover.prevent @drop="onDrop">
         <h3 class="title">{{ t('import.title') }}</h3>
+        <p class="hint">{{ t('import.sourceHint') }}</p>
+        <div v-for="p in CONFIG_PATHS" :key="p.os" class="path-block">
+          <div class="path-os">{{ p.os }}</div>
+          <code class="path">{{ p.path }}</code>
+        </div>
+        <p class="hint">{{ t('import.noConfigHint') }}</p>
         <p class="hint">{{ t('import.hint') }}</p>
         <input type="file" accept="application/json,.json" @change="onFile" />
         <textarea v-model="draft" spellcheck="false" />
@@ -132,6 +139,28 @@ function apply() {
   margin: 0;
   color: var(--fg-dim);
   font-size: var(--font-size-base);
+}
+.path-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.path-os {
+  color: var(--fg-dim);
+  font-size: var(--font-size-base);
+  letter-spacing: 0.04em;
+}
+.path {
+  display: block;
+  background: var(--bg-deep);
+  color: var(--fg-bright);
+  border: 1px solid var(--border-dim);
+  padding: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-base);
+  overflow-x: auto;
+  white-space: nowrap;
+  user-select: all;
 }
 input[type='file'] {
   color: var(--fg-dim);

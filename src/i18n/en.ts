@@ -33,6 +33,8 @@ export const en = {
   import: {
     title: 'Import config.json',
     hint: 'Paste JSON below, drag a file in, or pick one. Existing config will be replaced.',
+    sourceHint: 'Your existing config usually lives here — drag it in or paste it to keep editing:',
+    noConfigHint: "Don't have one yet? Just start from a preset above.",
     apply: 'Apply',
     errorPrefix: '⚠',
     buttonLabel: '[ import ]',
@@ -40,9 +42,15 @@ export const en = {
     nonObjectError: 'Config must be a JSON object',
   },
   export: {
-    downloadLabel: '[ export ]',
-    copyLabel: '[ copy ]',
+    title: 'Export config.json',
+    buttonLabel: '[ export ]',
+    destHint: 'Save this as config.json and put it here:',
+    effectHint: 'New Claude Code sessions will pick up the changes.',
+    copyPath: 'copy path',
+    downloadLabel: '[ download config.json ]',
+    copyLabel: '[ copy JSON ]',
     copyTooltip: 'Copy JSON to clipboard',
+    close: 'Close',
   },
   share: {
     buttonLabel: '[ share ]',
@@ -55,6 +63,7 @@ export const en = {
     linkCopied: 'Link copied',
     downloaded: 'Downloaded',
     jsonCopied: 'Copied to clipboard',
+    pathCopied: 'Path copied',
     copyFailed: 'Copy failed — see console',
   },
   forms: {
